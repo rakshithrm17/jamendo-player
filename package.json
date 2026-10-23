@@ -1,0 +1,12 @@
+{
+  "name": "jamendo-player",
+  "version": "1.0.0",
+  "description": "Personal music player (PWA) for Jamendo's Creative Commons catalogue, with licence-checked downloads",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "serve": "python3 -m http.server 8080"
+  },
+  "engines": { "node": ">=18" }
+}

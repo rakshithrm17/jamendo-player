@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Jamendo Player</title>
+<style>
+:root{--bg:#f1f4f2;--sf:#fff;--ink:#12302f;--mut:#5b7370;--line:#d3dedb;--ac:#e8a317}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1a1a;--sf:#162423;--ink:#e4efec;--mut:#8fa9a5;--line:#264240;--ac:#f0b232}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,sans-serif;padding:max(16px,env(safe-area-inset-top)) 16px 190px}
+main{max-width:760px;margin:auto}
+input,button{font:inherit;color:inherit}
+input{background:var(--sf);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+button{background:var(--sf);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button.pri{background:var(--ac);color:#2a1d00;border:0;font-weight:600}
+button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:8px;margin:12px 0}
+.track{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px 0;border-bottom:1px solid var(--line)}
+.track small{color:var(--mut);display:block}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+#bar{position:fixed;left:0;right:0;bottom:0;background:var(--sf);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+#bar audio{width:100%}
+#msg{color:var(--mut);min-height:1.5em}
+</style>
+</head>
+<body>
+<main>
+<h1>Jamendo Player</h1>
+<section id="setup" hidden>
+<p>Paste your free Jamendo client ID (from devportal.jamendo.com) to start. It stays on this device.</p>
+<div class="row"><input id="cid" placeholder="Client ID" aria-label="Jamendo client ID"><button class="pri" id="savecid">Save</button></div>
+</section>
+<div class="row"><input id="q" type="search" placeholder="Search tracks or artists" aria-label="Search"><button class="pri" id="go">Search</button><button id="pop">Popular</button></div>
+<p id="msg" role="status"></p>
+<div id="results"></div>
+</main>
+<div id="bar"><strong id="now">Nothing playing</strong><small id="credit" style="display:block;color:var(--mut)"></small>
+<audio id="audio" controls playsinline></audio>
+<div class="row"><button id="prev">Previous</button><button id="next">Next</button><button id="shuf">Shuffle: off</button><button id="rep">Repeat: off</button></div></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
